@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 using WiredBrainCoffee.CustomersApp.Command;
 using WiredBrainCoffee.CustomersApp.Data;
@@ -37,10 +38,12 @@ namespace WiredBrainCoffee.CustomersApp.ViewModel
             {
                 _selectedCustomer = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(nameof(IsCustomerSelected));
                 DeleteCommand.RaiseCanExecuteChanged();
                  
             }
         }
+        public bool IsCustomerSelected => SelectedCustomer is not null;
 
         public NavigationSide NavigationSide 
         { 
